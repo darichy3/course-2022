@@ -1,0 +1,78 @@
+- Component Directory
+ The component/ directory is where you put all your vue components which can then be imported inside your pages or other components
+ Nuxt automaticlly imports any components in your components/ directory
+
+- Component allow us to split the UI into independent and reusable pieces in isolation.
+
+- Dinamic Components
+ if you want to use The vue <component :is="someComputedComponent"/> syntax, then you will need to use the resolveComponent helper provide by Vue
+
+ <template>
+   <component :is="clickable ? MyButton : 'div'" />
+ </template>
+
+ <script setup>
+   const MyButton = resolveComponent('MyButton')
+ </script>
+
+- Dinamic Components vs Dinamic Imports
+ To dynamically import a component (also knwon as lazy-loading a component) all you need to do is add the Lazy prefix to the componetent's name.
+
+ <template>
+   <div>
+     <TheHeader />
+	 <slot />
+	 <LazyTheFooter />
+   </div>
+ </template>
+
+ Dinamic imports/loading will load Components only when we needed.
+
+- Routing
+ Nuxt provides a file-based routing to create routes within your web application using Vue Router under the hood.
+ Nuxt has Pages directory which hold all page routes
+ Pages are Vue components and can have the .vue, .js, .jsx, .ts or .tsx extention.
+ 
+ If you are using app.vue, make sure to use the <NuxtPage/>
+ component to display the current page:
+ 
+- Page Navigation
+ To Navigate between pages of your app, you should use the <NuxtLink> component.
+ Nuxt 3 allows programmatic navigation through the navigateTo() utility method.
+ Pages must have a single root element to allow route tranitions between pages.
+ 
+- Layouts Directory
+ Nuxt provides a customizable layouts framework you can use throughout your application
+ Ideal for extracting common UI or code patterns into reusable layout components.
+ Layouts are placed in the layouts/ directory and will be automaticlly loaded via asynchronous import when used
+ 
+- Dinamic Routing
+ If you place anything within square brackets, it will be turned into a dinamic route parameter.
+ You can mix and match multiple parameter and even non-dinamic text within a file name or directory.
+ 
+ -| pages/
+ ---| index.vue
+ ---| users-[group]/
+ -----| [id].vue
+ 
+- Tailwind Assets
+ assets/ directory
+ The assets/ directory is used to add all the website's assets that the build tool (webpack or Vite) will process.
+ The directory usually contains the following types of files:
+   Stylesheets (CSS, SASS, etc.)
+   Fonts
+   Images that won't be served from the public/ directory.
+
+- Public Directory
+ The public/ directory is directly served at the server root and contains public files that have to keep their names (e.g.robots.txt) or likely won't change (e.g. favicon.ico).
+ you can access directly into whatever it is in public/ directory.
+ ex:
+ -| public/
+ ---| robot.txt
+ access with : http://localhost:3000/robot.txt
+ 
+ -| assets/
+ ---| robot.txt
+ access with : http://localhost:3000/assets/robot.txt
+ 
+- Head Management
