@@ -1,13 +1,7 @@
 <template>
   <div class="grid grid-cols-4 gap4 mt-10">
     <div v-for="ip in iphones" class="shadow-lg border rounded-lg text-center">
-      <nuxt-link :to="`/iphone/iphone-${ip.version}`">
-        <h1>Iphone {{ ip.version }}</h1>
-        <div class="flex justify-center">
-          <img width="100" :src="ip.url" alt="" />
-          <!-- <img width="200" :src="`/images/iphone-${ip.version}.webp`" alt="" /> -->
-        </div>
-      </nuxt-link>
+      <IphoneCard :iphone="ip" />
     </div>
   </div>
 </template>
@@ -15,12 +9,40 @@
 <script setup>
 // for public directory you can't write explicit /public/images/....
 // but, write whatever it is inner /public directory
-const iphones = ref([
-  { version: "12", url: "/images/iphone-12.webp" },
-  { version: "12-pro", url: "/images/iphone-12-pro.webp" },
-  { version: "13", url: "/images/iphone-13.webp" },
-  { version: "13-pro", url: "/images/iphone-13-pro.webp" },
-]);
+const iphones = [
+  {
+    name: "Iphone 12",
+    version: "12",
+    img: "/images/iphone-12.webp",
+    url: "/iphone/iphone-12",
+  },
+  {
+    name: "Iphone 12 PRO",
+    version: "12-pro",
+    img: "/images/iphone-12-pro.webp",
+    url: "/iphone/iphone-12-pro",
+  },
+  {
+    name: "Iphone 13",
+    version: "13",
+    img: "/images/iphone-13.webp",
+    url: "/iphone/iphone-13",
+  },
+  {
+    name: "Iphone 13 PRO",
+    version: "13-pro",
+    img: "/images/iphone-13-pro.webp",
+    url: "/iphone/iphone-13-pro",
+  },
+];
+
+// fetch API just for knowledge
+// const { data } = useFetch("/iphones");
+// console.log(data.value);
+
+// const iphones = computed(() => {
+//   return data.value;
+// });
 
 useHead({
   title: "Nuxt3 - Iphones",

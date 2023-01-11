@@ -4,9 +4,9 @@
       <p>Dashboard</p>
       <p>Settings</p>
 
-      <nav>
+      <nav class="bg-green-600 rounded-md ml-2 mt-5 p-2 text-white text-center">
         <!-- NuxtLink to navigate page -->
-        <NuxtLink to="/">Home</NuxtLink>
+        <NuxtLink to="/">Back to Home</NuxtLink>
       </nav>
     </div>
     <section>
